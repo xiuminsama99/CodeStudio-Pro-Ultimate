@@ -1,0 +1,50 @@
+# Augment
+- Augment相关重要地址：清理Cookies使用chrome://settings/content/all，查看账户订阅和使用额度使用https://app.augmentcode.com/account/subscription
+
+# Chrome Protocol URLs & Browser Security
+- When implementing functions to open chrome:// protocol URLs, avoid complex workarounds like blank page redirects, focus on direct window.open() with proper fallbacks, and handle browser security restrictions with clear user guidance for manual navigation.
+- User prefers using intelligent copy + user guidance approach for Chrome settings page access instead of direct navigation or browser extensions.
+- Chrome设置页面访问方案：已实现智能复制+用户引导的简化方案，通过自动复制chrome://settings/content/all到剪贴板，然后显示简洁的4步操作指引，用户体验流畅且代码维护性高。
+- 浏览器安全限制处理：chrome://协议URL无法通过JavaScript直接打开，最佳Web应用解决方案是智能复制+用户引导，浏览器扩展是唯一能直接打开chrome://页面的方案。
+- Chrome浏览器安全限制阻止直接跳转到chrome://协议URL，需要提供降级方案：点击文字链接→复制地址到剪贴板→显示简洁的手动粘贴指引，避免复杂装饰元素，保持流畅用户体验
+- Cookie清理按钮交互设计：单击复制地址到剪贴板，右键点击弹出跳转选项，提供双重操作方式增强用户体验。右键时提示复制chrome://settings/content/all到剪贴板，然后直接跳转到该页面
+
+# User Interface & Functionality Preferences
+- User prefers simplified UI designs that prioritize functionality over visual complexity, with streamlined user flows, minimal decorative elements, and focus on practical usability rather than elaborate visual effects.
+- 功能简化原则：在CodeStudio Pro Ultimate项目中，优先选择简洁实用的解决方案而非复杂的视觉设计，专注于核心功能和用户体验流畅性，避免过度工程化。
+- User prefers Wikipedia-style clickable text links where the text itself is the clickable element that directly opens URLs, rather than separate link buttons.
+- User prefers expandable click areas for better UX in CodeStudio Pro Ultimate - wants entire button containers clickable rather than just text links, while maintaining simple design without complex decorations or animations.
+- User prefers auto-dismissing toast notifications over alert dialogs for better UX, simplified UI interactions without unnecessary confirmation steps, and streamlined user flows that remove obvious steps users already know.
+- User prefers more compact button designs as current buttons are too large and make page scrolling inconvenient, emphasizes simple design without decorative elements and smooth user experience following logical operation order.
+- CodeStudio Pro Ultimate UI布局偏好：系统状态调整为标题下面一行显示，运行日志占据整行，保持简洁设计无装饰元素，页面逻辑符合操作顺序优先流畅用户体验
+- User prefers clean visual optimization focusing on font clarity, transparent borders, flat alignment, avoiding animations/decorations, maintaining compact layout with functional priority over visual complexity.
+
+# CodeStudio Pro Ultimate - Cookie Cleaning Feature Design
+- CodeStudio Pro Ultimate项目Cookie清理功能设计原则：1.简洁性优先-避免装饰元素和复杂动画，专注核心功能；2.操作流程-点击按钮→显示提示→展示可点击链接→点击蓝色文字链接→自动跳转；3.用户体验-流畅无卡顿，维基百科式链接设计，文字链接嵌入提示文本，直接跳转无确认；4.功能标准-正确处理chrome://协议，提供降级方案，代码简洁避免过度工程化
+
+# CodeStudio Pro Ultimate - UI Layout Preferences
+- CodeStudio Pro Ultimate UI布局偏好：Cookie清理和插件修复按钮移至系统管理区域与其他管理按钮并排，额度查看按钮移回临时邮箱区域并高亮，插件检查按钮放在系统状态下方，保持简洁设计无装饰元素，统一尺寸标准和紧凑布局
+
+# CodeStudio Pro Ultimate - Running Log Design Preferences
+- CodeStudio Pro Ultimate运行日志区域优化：视觉优化（布局调整、字体间距、色彩方案），功能提升（控制按钮、滚动体验、信息密度），遵循简洁设计原则，保持紧凑布局和统一尺寸标准，优先功能性和易用性，日志等级颜色方案使用GitHub标准色(信息#58a6ff/成功#56d364/警告#f1c40f/错误#f85149)，添加左边框指示器和悬停效果。
+- CodeStudio Pro Ultimate运行日志区域设计偏好：视觉优化（布局调整、字体间距、色彩方案），功能提升（控制按钮、滚动体验、信息密度），遵循简洁设计原则，保持紧凑布局和统一尺寸标准，优先功能性和易用性
+
+# CodeStudio Pro Ultimate - System Status Bar Design Preferences
+- CodeStudio Pro Ultimate系统状态栏设计偏好：紧凑布局优先，核心功能置顶，系统状态和日志面板紧凑化，减少空白区域，保持简洁设计无装饰元素，功能性和易用性优先，按使用频率排列功能顺序，状态值使用GitHub标准颜色方案，添加图标指示器和悬停效果，响应式适配移动端显示.
+
+# CodeStudio Pro Ultimate - Current Project Status
+- CodeStudio Pro Ultimate项目当前状态：已完成核心功能区域(快速启动/直接启动/一键续杯)、系统管理区域(6个按钮：轻度清理/深度清理/完全重置/插件检查/插件修复/清理Cookies)、实用工具区域(额度查看高亮+6个临时邮箱工具)，采用紧凑网格布局，统一48px按钮高度，简洁设计无装饰元素。
+
+# CodeStudio Pro Ultimate - Visual Optimization
+- CodeStudio Pro Ultimate视觉优化成果：字体使用-apple-system系统字体栈，启用antialiased渲染和optimizeLegibility，边框统一使用#d1d5da(GitHub标准色)，容器圆角8px/按钮圆角6px，背景色#f6f8fa，主色调#0366d6蓝色/#28a745绿色，添加微妙阴影和悬停效果，整体采用GitHub设计系统标准。
+
+# CodeStudio Pro Ultimate - Functionality Description Optimization
+- CodeStudio Pro Ultimate功能描述优化：核心功能明确适用场景(快速启动-首次使用/直接启动-系统正常/一键续杯-遇到故障)，清理功能详细说明清理内容(轻度-temp文件夹/深度-缓存日志/完全-所有数据)，插件工具提供操作流程(检查-扫描报告/修复-重装组件/Cookies-清除存储)，使用箭头符号表示步骤流程。
+
+# CodeStudio Pro Ultimate - Design Principles
+- CodeStudio Pro Ultimate设计原则：简洁设计优先无装饰元素，标准按钮显示而非链接样式，提示信息精简只保留必要步骤，Toast提示框在鼠标点击位置附近显示且不超出屏幕边界，优先流畅用户体验，紧凑布局优先，核心功能置顶，系统状态和日志面板紧凑化，减少空白区域，功能性和易用性优先，按使用频率排列功能顺序.
+- CodeStudio Pro Ultimate UI设计偏好：简洁设计无装饰元素，标准按钮显示而非链接样式，提示信息精简只保留必要步骤，Toast提示框在鼠标点击位置附近显示且不超出屏幕边界，优先流畅用户体验
+- CodeStudio Pro Ultimate UI布局偏好：紧凑布局优先，核心功能置顶，系统状态和日志面板紧凑化，减少空白区域，保持简洁设计无装饰元素，功能性和易用性优先，按使用频率排列功能顺序
+
+# CodeStudio Pro Ultimate - Technical Implementation Details
+- CodeStudio Pro Ultimate技术实现细节：统一48px按钮最小高度，8px网格间距，#d1d5da边框色，#f6f8fa背景色，#0366d6主色调，6px按钮圆角，0.15s过渡动画，font-weight 500/600字重，antialiased字体渲染，GitHub设计系统配色方案，微妙阴影效果0 1px 3px rgba(27,31,35,0.12)，悬停时translateY(-1px)上移效果。

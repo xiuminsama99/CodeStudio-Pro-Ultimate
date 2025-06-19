@@ -1,0 +1,20 @@
+// This configuration file allows you to pass permanent command line arguments to VS Code.
+// Only a subset of arguments is currently supported to reduce the likelihood of breaking
+// the installation.
+//
+// PLEASE DO NOT CHANGE WITHOUT UNDERSTANDING THE IMPACT
+//
+// NOTE: Changing this file requires a restart of VS Code.
+{
+	"enable-crash-reporter": false,
+	"crash-reporter-id": "a1e3c05e-1e0c-4f81-ab2c-6fdd9666dee5",
+	"disable-web-security": true,
+	"disable-features": "VizDisplayCompositor",
+	"no-sandbox": true,
+	"skip-augment-login": true,
+	"disable-usage-limit": true,
+	"augment-free-mode": true,
+	"disable-background-timer-throttling": true,
+	"disable-renderer-backgrounding": true,
+	"disable-backgrounding-occluded-windows": true
+}

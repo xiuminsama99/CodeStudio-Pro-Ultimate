@@ -1,0 +1,180 @@
+{
+  "version": "2.0.0",
+  "source": "project",
+  "metadata": {
+    "version": "2.0.0",
+    "description": "project 级资源注册表",
+    "createdAt": "2025-06-19T04:38:03.567Z",
+    "updatedAt": "2025-06-19T04:38:03.570Z",
+    "resourceCount": 12
+  },
+  "resources": [
+    {
+      "id": "luoming",
+      "source": "project",
+      "protocol": "role",
+      "name": "Luoming 角色",
+      "description": "专业角色，提供特定领域的专业能力",
+      "reference": "@project://.promptx/resource/domain/luoming/luoming.role.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.568Z",
+        "updatedAt": "2025-06-19T04:38:03.568Z",
+        "scannedAt": "2025-06-19T04:38:03.568Z"
+      }
+    },
+    {
+      "id": "config-management",
+      "source": "project",
+      "protocol": "thought",
+      "name": "Config Management 思维模式",
+      "description": "思维模式，指导AI的思考方式",
+      "reference": "@project://.promptx/resource/domain/luoming/thought/config-management.thought.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "example-first-thinking",
+      "source": "project",
+      "protocol": "thought",
+      "name": "Example First Thinking 思维模式",
+      "description": "思维模式，指导AI的思考方式",
+      "reference": "@project://.promptx/resource/domain/luoming/thought/example-first-thinking.thought.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "jarvis-intelligence",
+      "source": "project",
+      "protocol": "thought",
+      "name": "Jarvis Intelligence 思维模式",
+      "description": "思维模式，指导AI的思考方式",
+      "reference": "@project://.promptx/resource/domain/luoming/thought/jarvis-intelligence.thought.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "logic-gate-architecture",
+      "source": "project",
+      "protocol": "thought",
+      "name": "Logic Gate Architecture 思维模式",
+      "description": "思维模式，指导AI的思考方式",
+      "reference": "@project://.promptx/resource/domain/luoming/thought/logic-gate-architecture.thought.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "problem-analysis",
+      "source": "project",
+      "protocol": "thought",
+      "name": "Problem Analysis 思维模式",
+      "description": "思维模式，指导AI的思考方式",
+      "reference": "@project://.promptx/resource/domain/luoming/thought/problem-analysis.thought.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "adaptive-execution-flow",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Adaptive Execution Flow 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/luoming/execution/adaptive-execution-flow.execution.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "adaptive-learning",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Adaptive Learning 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/luoming/execution/adaptive-learning.execution.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "human-friendly-communication",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Human Friendly Communication 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/luoming/execution/human-friendly-communication.execution.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "program-control-structure",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Program Control Structure 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/luoming/execution/program-control-structure.execution.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "solution-design",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Solution Design 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/luoming/execution/solution-design.execution.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    },
+    {
+      "id": "tool-integration",
+      "source": "project",
+      "protocol": "execution",
+      "name": "Tool Integration 执行模式",
+      "description": "执行模式，定义具体的行为模式",
+      "reference": "@project://.promptx/resource/domain/luoming/execution/tool-integration.execution.md",
+      "metadata": {
+        "createdAt": "2025-06-19T04:38:03.569Z",
+        "updatedAt": "2025-06-19T04:38:03.569Z",
+        "scannedAt": "2025-06-19T04:38:03.569Z"
+      }
+    }
+  ],
+  "stats": {
+    "totalResources": 12,
+    "byProtocol": {
+      "role": 1,
+      "thought": 5,
+      "execution": 6
+    },
+    "bySource": {
+      "project": 12
+    }
+  }
+}

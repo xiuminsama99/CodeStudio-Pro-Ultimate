@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeStudio Pro Ultimate - 清理工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .header {
+            background: #4a90e2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 1em;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .clean-level {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .clean-level:hover {
+            border-color: #4a90e2;
+        }
+
+        .clean-level.selected {
+            border-color: #4a90e2;
+            background: #f0f8ff;
+        }
+
+        .clean-level input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .level-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .level-desc {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .level-details {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .action-area {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .result-area {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .result-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .result-content {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 3px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 0.9em;
+        }
+
+        .progress {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #4a90e2;
+            width: 0%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧹 CodeStudio Pro 清理工具</h1>
+            <p>选择清理级别，一键完成清理</p>
+        </div>
+
+        <div class="content">
+            <!-- 清理级别选择 -->
+            <div class="section">
+                <div class="section-title">选择清理级别</div>
+
+                <div class="clean-level" onclick="selectLevel('light')">
+                    <input type="radio" name="clean-level" value="light" id="level-light" checked>
+                    <label for="level-light">
+                        <div class="level-title">🧠 轻度清理（推荐）</div>
+                        <div class="level-desc">只清理使用限制相关的数据，保留你的设置和配置</div>
+                        <div class="level-details">清理内容：使用限制数据、临时文件、设备ID</div>
+                    </label>
+                </div>
+
+                <div class="clean-level" onclick="selectLevel('deep')">
+                    <input type="radio" name="clean-level" value="deep" id="level-deep">
+                    <label for="level-deep">
+                        <div class="level-title">🧹 深度清理</div>
+                        <div class="level-desc">清理更多数据，但保留重要的配置文件</div>
+                        <div class="level-details">清理内容：数据库文件、缓存文件、日志文件、设备ID、环境配置</div>
+                    </label>
+                </div>
+
+                <div class="clean-level" onclick="selectLevel('complete')">
+                    <input type="radio" name="clean-level" value="complete" id="level-complete">
+                    <label for="level-complete">
+                        <div class="level-title">💥 完全重置</div>
+                        <div class="level-desc">⚠️ 清除所有数据，就像重新安装一样</div>
+                        <div class="level-details">清理内容：所有数据库、所有配置文件、所有缓存、重新设置环境</div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 执行操作 -->
+            <div class="action-area">
+                <button class="btn btn-primary" onclick="startCleaning()" id="start-btn">
+                    🚀 开始清理
+                </button>
+                <button class="btn btn-secondary" onclick="goBack()">
+                    ← 返回主页
+                </button>
+            </div>
+
+            <!-- 操作结果 -->
+            <div class="section">
+                <div class="section-title">操作结果</div>
+
+                <div class="progress hidden" id="progress">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+
+                <div class="result-area">
+                    <div class="result-title">执行日志</div>
+                    <div class="result-content" id="result-log">
+准备就绪，请选择清理级别后点击"开始清理"
+
+💡 说明：
+• 轻度清理：适合日常使用，清理限制但保留设置
+• 深度清理：解决大部分问题，清理更彻底
+• 完全重置：解决所有问题，但需要重新配置
+
+⭐ 建议首次使用选择"轻度清理"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLevel = 'light';
+        let isOperating = false;
+
+        // 选择清理级别
+        function selectLevel(level) {
+            if (isOperating) return;
+
+            currentLevel = level;
+
+            // 更新选中状态
+            document.querySelectorAll('.clean-level').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            document.querySelector(`input[value="${level}"]`).checked = true;
+            document.querySelector(`input[value="${level}"]`).closest('.clean-level').classList.add('selected');
+        }
+
+        // 更新日志
+        function updateLog(message) {
+            const log = document.getElementById('result-log');
+            const timestamp = new Date().toLocaleTimeString();
+            log.textContent += `\n[${timestamp}] ${message}`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // 更新进度条
+        function updateProgress(percent) {
+            const progressBar = document.getElementById('progress-bar');
+            const progress = document.getElementById('progress');
+
+            if (percent > 0) {
+                progress.classList.remove('hidden');
+                progressBar.style.width = percent + '%';
+            } else {
+                progress.classList.add('hidden');
+            }
+        }
+
+        // 设置操作状态
+        function setOperating(operating) {
+            isOperating = operating;
+            const startBtn = document.getElementById('start-btn');
+
+            if (operating) {
+                startBtn.disabled = true;
+                startBtn.textContent = '⏳ 清理中...';
+            } else {
+                startBtn.disabled = false;
+                startBtn.textContent = '🚀 开始清理';
+            }
+        }
+
+        // 开始清理
+        async function startCleaning() {
+            if (isOperating) return;
+
+            const levelNames = {
+                'light': '轻度清理',
+                'deep': '深度清理',
+                'complete': '完全重置'
+            };
+
+            const levelName = levelNames[currentLevel];
+
+            if (!confirm(`确定要执行"${levelName}"吗？\n\n这个操作将根据选择的级别清理相应的数据。`)) {
+                return;
+            }
+
+            setOperating(true);
+            updateLog(`开始执行${levelName}...`);
+            updateProgress(10);
+
+            try {
+                // 根据级别设置清理选项
+                const options = getLevelOptions(currentLevel);
+
+                updateProgress(30);
+                updateLog('正在清理数据...');
+
+                const response = await fetch('/api/clean', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(options)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    updateProgress(100);
+                    updateLog('✅ 清理完成！');
+                    updateLog(`成功执行了 ${result.completed_steps} 个清理步骤`);
+                    updateLog('🎉 现在可以正常使用CodeStudio Pro了');
+                } else {
+                    updateLog('❌ 清理失败：' + result.error);
+                }
+            } catch (error) {
+                updateLog('❌ 网络连接错误：' + error.message);
+            }
+
+            setOperating(false);
+            setTimeout(() => updateProgress(0), 3000);
+        }
+
+        // 根据级别获取清理选项
+        function getLevelOptions(level) {
+            switch (level) {
+                case 'light':
+                    return {
+                        smart_clean_database: true,
+                        clean_system: true,
+                        reset_ids: true
+                    };
+                case 'deep':
+                    return {
+                        clean_database: true,
+                        clean_system: true,
+                        reset_ids: true,
+                        setup_environment: true
+                    };
+                case 'complete':
+                    return {
+                        complete_reset_database: true,
+                        clean_system: true,
+                        reset_ids: true,
+                        setup_environment: true,
+                        configure_app: true
+                    };
+                default:
+                    return {
+                        smart_clean_database: true,
+                        clean_system: true,
+                        reset_ids: true
+                    };
+            }
+        }
+
+        // 返回主页
+        function goBack() {
+            if (isOperating) {
+                alert('清理正在进行中，请等待完成后再返回');
+                return;
+            }
+            window.location.href = '/';
+        }
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLog('🧹 清理工具已准备就绪');
+            updateLog('请选择合适的清理级别，然后点击"开始清理"');
+
+            // 默认选择轻度清理
+            selectLevel('light');
+        });
+    </script>
+</body>
+</html>

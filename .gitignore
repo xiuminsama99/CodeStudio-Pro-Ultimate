@@ -1,0 +1,38 @@
+# CodeStudio Pro Ultimate - Git忽略文件
+
+# 用户数据目录（包含个人设置和缓存）
+data/user-data/
+data/extensions/
+
+# 缓存文件
+*.pak
+*.dll
+*.dat
+*.bin
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 状态文件（包含个人配置）
+codestudio_ultimate_state.json
+
+# 备份文件
+*.backup
+*.bak
+
+# 编译文件
+*.exe
+*.msi
+
+# 大型资源文件（保留核心文件）
+chrome_*.pak
+resources.pak
