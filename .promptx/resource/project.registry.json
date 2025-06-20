@@ -4,8 +4,8 @@
   "metadata": {
     "version": "2.0.0",
     "description": "project 级资源注册表",
-    "createdAt": "2025-06-19T04:38:03.567Z",
-    "updatedAt": "2025-06-19T04:38:03.570Z",
+    "createdAt": "2025-06-19T23:25:07.242Z",
+    "updatedAt": "2025-06-19T23:25:07.246Z",
     "resourceCount": 12
   },
   "resources": [
@@ -17,9 +17,9 @@
       "description": "专业角色，提供特定领域的专业能力",
       "reference": "@project://.promptx/resource/domain/luoming/luoming.role.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.568Z",
-        "updatedAt": "2025-06-19T04:38:03.568Z",
-        "scannedAt": "2025-06-19T04:38:03.568Z"
+        "createdAt": "2025-06-19T23:25:07.244Z",
+        "updatedAt": "2025-06-19T23:25:07.244Z",
+        "scannedAt": "2025-06-19T23:25:07.244Z"
       }
     },
     {
@@ -30,9 +30,9 @@
       "description": "思维模式，指导AI的思考方式",
       "reference": "@project://.promptx/resource/domain/luoming/thought/config-management.thought.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.244Z",
+        "updatedAt": "2025-06-19T23:25:07.244Z",
+        "scannedAt": "2025-06-19T23:25:07.244Z"
       }
     },
     {
@@ -43,9 +43,9 @@
       "description": "思维模式，指导AI的思考方式",
       "reference": "@project://.promptx/resource/domain/luoming/thought/example-first-thinking.thought.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.244Z",
+        "updatedAt": "2025-06-19T23:25:07.244Z",
+        "scannedAt": "2025-06-19T23:25:07.244Z"
       }
     },
     {
@@ -56,9 +56,9 @@
       "description": "思维模式，指导AI的思考方式",
       "reference": "@project://.promptx/resource/domain/luoming/thought/jarvis-intelligence.thought.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.244Z",
+        "updatedAt": "2025-06-19T23:25:07.244Z",
+        "scannedAt": "2025-06-19T23:25:07.244Z"
       }
     },
     {
@@ -69,9 +69,9 @@
       "description": "思维模式，指导AI的思考方式",
       "reference": "@project://.promptx/resource/domain/luoming/thought/logic-gate-architecture.thought.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.244Z",
+        "updatedAt": "2025-06-19T23:25:07.244Z",
+        "scannedAt": "2025-06-19T23:25:07.244Z"
       }
     },
     {
@@ -82,9 +82,9 @@
       "description": "思维模式，指导AI的思考方式",
       "reference": "@project://.promptx/resource/domain/luoming/thought/problem-analysis.thought.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.244Z",
+        "updatedAt": "2025-06-19T23:25:07.244Z",
+        "scannedAt": "2025-06-19T23:25:07.244Z"
       }
     },
     {
@@ -95,9 +95,9 @@
       "description": "执行模式，定义具体的行为模式",
       "reference": "@project://.promptx/resource/domain/luoming/execution/adaptive-execution-flow.execution.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.245Z",
+        "updatedAt": "2025-06-19T23:25:07.245Z",
+        "scannedAt": "2025-06-19T23:25:07.245Z"
       }
     },
     {
@@ -108,9 +108,9 @@
       "description": "执行模式，定义具体的行为模式",
       "reference": "@project://.promptx/resource/domain/luoming/execution/adaptive-learning.execution.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.245Z",
+        "updatedAt": "2025-06-19T23:25:07.245Z",
+        "scannedAt": "2025-06-19T23:25:07.245Z"
       }
     },
     {
@@ -121,9 +121,9 @@
       "description": "执行模式，定义具体的行为模式",
       "reference": "@project://.promptx/resource/domain/luoming/execution/human-friendly-communication.execution.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.245Z",
+        "updatedAt": "2025-06-19T23:25:07.245Z",
+        "scannedAt": "2025-06-19T23:25:07.245Z"
       }
     },
     {
@@ -134,9 +134,9 @@
       "description": "执行模式，定义具体的行为模式",
       "reference": "@project://.promptx/resource/domain/luoming/execution/program-control-structure.execution.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.245Z",
+        "updatedAt": "2025-06-19T23:25:07.245Z",
+        "scannedAt": "2025-06-19T23:25:07.245Z"
       }
     },
     {
@@ -147,9 +147,9 @@
       "description": "执行模式，定义具体的行为模式",
       "reference": "@project://.promptx/resource/domain/luoming/execution/solution-design.execution.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.245Z",
+        "updatedAt": "2025-06-19T23:25:07.245Z",
+        "scannedAt": "2025-06-19T23:25:07.245Z"
       }
     },
     {
@@ -160,9 +160,9 @@
       "description": "执行模式，定义具体的行为模式",
       "reference": "@project://.promptx/resource/domain/luoming/execution/tool-integration.execution.md",
       "metadata": {
-        "createdAt": "2025-06-19T04:38:03.569Z",
-        "updatedAt": "2025-06-19T04:38:03.569Z",
-        "scannedAt": "2025-06-19T04:38:03.569Z"
+        "createdAt": "2025-06-19T23:25:07.245Z",
+        "updatedAt": "2025-06-19T23:25:07.245Z",
+        "scannedAt": "2025-06-19T23:25:07.245Z"
       }
     }
   ],

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeStudio Pro Ultimate - 智能化管理控制台</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/layout.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1>☕ CodeStudio Pro Ultimate</h1>
+                <p>智能化管理控制台 - 简洁高效，一键操作</p>
+            </div>
+            <div id="status-panel" class="status-panel"></div>
+        </header>
+        
+        <main class="app-main">
+            <section class="control-section">
+                <h2>核心功能</h2>
+                <div id="core-actions" class="action-grid"></div>
+            </section>
+            
+            <section class="management-section">
+                <h2>系统管理</h2>
+                <div id="system-actions" class="action-grid"></div>
+            </section>
+            
+            <section class="app-section">
+                <h2>应用操作</h2>
+                <div id="app-actions" class="action-grid"></div>
+            </section>
+            
+            <section class="path-section">
+                <h2>🔧 动态路径管理</h2>
+                <div id="path-actions" class="action-grid"></div>
+            </section>
+            
+            <section class="tools-section">
+                <h2>实用工具</h2>
+                <div id="tools-panel" class="tools-grid"></div>
+            </section>
+        </main>
+        
+        <aside class="app-sidebar">
+            <div id="log-panel" class="log-panel">
+                <div class="log-header">
+                    <h3>📝 运行日志</h3>
+                    <div class="log-controls">
+                        <select id="log-filter">
+                            <option value="all">全部</option>
+                            <option value="error">错误</option>
+                            <option value="info">信息</option>
+                            <option value="success">成功</option>
+                        </select>
+                        <button id="clear-logs" class="btn-small">🗑️</button>
+                        <button id="copy-logs" class="btn-small">📋</button>
+                    </div>
+                </div>
+                <div id="log-content" class="log-content"></div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- 核心模块 -->
+    <script src="core/api-manager.js"></script>
+    <script src="core/state-manager.js"></script>
+    <script src="core/event-bus.js"></script>
+    
+    <!-- 服务模块 -->
+    <script src="services/system-service.js"></script>
+    <script src="services/path-service.js"></script>
+    <script src="services/app-service.js"></script>
+    
+    <!-- 组件模块 -->
+    <script src="components/status-panel.js"></script>
+    <script src="components/log-panel.js"></script>
+    <script src="components/action-buttons.js"></script>
+    
+    <!-- 主应用 -->
+    <script src="main.js"></script>
+</body>
+</html>

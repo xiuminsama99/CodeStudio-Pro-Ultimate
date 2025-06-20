@@ -1,0 +1,21 @@
+{
+  "cleanup_summary": {
+    "timestamp": "2025-06-20T20:31:23.521644",
+    "deleted_files_count": 1,
+    "deleted_dirs_count": 1,
+    "errors_count": 1
+  },
+  "deleted_files": [
+    "C:\\Users\\XM\\Downloads\\v.12Ultimate版1.3工作室精酿版\\src\\core\\codestudio_pro_ultimate.py"
+  ],
+  "deleted_directories": [
+    "C:\\Users\\XM\\Downloads\\v.12Ultimate版1.3工作室精酿版\\locales"
+  ],
+  "errors": [
+    {
+      "action": "删除目录",
+      "path": "C:\\Users\\XM\\Downloads\\v.12Ultimate版1.3工作室精酿版\\resources\\app",
+      "error": "[WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\\\Users\\\\XM\\\\Downloads\\\\v.12Ultimate版1.3工作室精酿版\\\\resources\\\\app\\\\node_modules.asar'"
+    }
+  ]
+}

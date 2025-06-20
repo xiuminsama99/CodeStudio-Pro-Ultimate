@@ -1,0 +1,79 @@
+# Prometheus配置文件
+# CodeStudio Pro Ultimate 3.0 监控配置
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# 告警规则文件
+rule_files:
+  - "alert_rules.yml"
+
+# 抓取配置
+scrape_configs:
+  # Prometheus自身监控
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # 监控服务
+  - job_name: 'monitoring-service'
+    static_configs:
+      - targets: ['localhost:3008']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # 实例管理服务
+  - job_name: 'instance-service'
+    static_configs:
+      - targets: ['localhost:3001']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # 资源管理服务
+  - job_name: 'resource-service'
+    static_configs:
+      - targets: ['localhost:3002']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # 用户管理服务
+  - job_name: 'user-service'
+    static_configs:
+      - targets: ['localhost:3003']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # API网关
+  - job_name: 'api-gateway'
+    static_configs:
+      - targets: ['localhost:3000']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # 协同服务
+  - job_name: 'collaboration-service'
+    static_configs:
+      - targets: ['localhost:3004']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # 配置管理服务
+  - job_name: 'config-service'
+    static_configs:
+      - targets: ['localhost:3005']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+
+  # Node.js应用指标
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']
+    scrape_interval: 15s
+
+# 告警管理器配置
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - localhost:9093

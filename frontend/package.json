@@ -1,0 +1,25 @@
+{
+  "name": "codestudio-collaborative-frontend",
+  "version": "1.0.0",
+  "description": "CodeStudio Collaborative Frontend",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "axios": "^1.3.0",
+    "antd": "^5.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^3.1.0",
+    "vite": "^4.1.0",
+    "vitest": "^0.28.0",
+    "@playwright/test": "^1.30.0"
+  }
+}

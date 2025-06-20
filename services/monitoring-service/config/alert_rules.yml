@@ -1,0 +1,186 @@
+# Prometheus告警规则配置
+# CodeStudio Pro Ultimate 3.0 告警规则
+
+groups:
+  - name: codestudio.rules
+    rules:
+      # 服务可用性告警
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: "{{ $labels.job }}"
+        annotations:
+          summary: "服务 {{ $labels.job }} 不可用"
+          description: "服务 {{ $labels.job }} 在实例 {{ $labels.instance }} 上已经停止运行超过1分钟"
+
+      # HTTP错误率告警
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(codestudio_http_requests_total{status_code=~"5.."}[5m])) by (service)
+            /
+            sum(rate(codestudio_http_requests_total[5m])) by (service)
+          ) * 100 > 5
+        for: 2m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} 错误率过高"
+          description: "服务 {{ $labels.service }} 的HTTP错误率在过去5分钟内超过5%，当前值: {{ $value }}%"
+
+      # HTTP响应时间告警
+      - alert: HighResponseTime
+        expr: |
+          histogram_quantile(0.95, 
+            sum(rate(codestudio_http_request_duration_seconds_bucket[5m])) by (le, service)
+          ) > 2
+        for: 3m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} 响应时间过长"
+          description: "服务 {{ $labels.service }} 的95%响应时间超过2秒，当前值: {{ $value }}秒"
+
+      # CPU使用率告警
+      - alert: HighCpuUsage
+        expr: codestudio_resource_usage{resource_type="cpu"} > 80
+        for: 5m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} CPU使用率过高"
+          description: "服务 {{ $labels.service }} 的CPU使用率超过80%，当前值: {{ $value }}%"
+
+      # 内存使用率告警
+      - alert: HighMemoryUsage
+        expr: codestudio_resource_usage{resource_type="memory"} > 85
+        for: 5m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} 内存使用率过高"
+          description: "服务 {{ $labels.service }} 的内存使用率超过85%，当前值: {{ $value }}%"
+
+      # 磁盘使用率告警
+      - alert: HighDiskUsage
+        expr: codestudio_resource_usage{resource_type="disk"} > 90
+        for: 10m
+        labels:
+          severity: critical
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} 磁盘使用率过高"
+          description: "服务 {{ $labels.service }} 的磁盘使用率超过90%，当前值: {{ $value }}%"
+
+      # 系统健康状态告警
+      - alert: SystemUnhealthy
+        expr: codestudio_system_health == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: "{{ $labels.service }}"
+          component: "{{ $labels.component }}"
+        annotations:
+          summary: "系统组件 {{ $labels.component }} 不健康"
+          description: "服务 {{ $labels.service }} 的组件 {{ $labels.component }} 健康检查失败"
+
+      # 配置操作失败告警
+      - alert: ConfigOperationFailures
+        expr: |
+          sum(rate(codestudio_config_operations_total{status="failed"}[5m])) by (operation) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+          operation: "{{ $labels.operation }}"
+        annotations:
+          summary: "配置操作 {{ $labels.operation }} 失败率过高"
+          description: "配置操作 {{ $labels.operation }} 在过去5分钟内失败率超过0.1次/秒"
+
+      # 实例操作失败告警
+      - alert: InstanceOperationFailures
+        expr: |
+          sum(rate(codestudio_instance_operations_total{status="failed"}[5m])) by (operation) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+          operation: "{{ $labels.operation }}"
+        annotations:
+          summary: "实例操作 {{ $labels.operation }} 失败率过高"
+          description: "实例操作 {{ $labels.operation }} 在过去5分钟内失败率超过0.1次/秒"
+
+      # 连接数过多告警
+      - alert: TooManyConnections
+        expr: codestudio_active_connections > 1000
+        for: 5m
+        labels:
+          severity: warning
+          service: "{{ $labels.service }}"
+          type: "{{ $labels.type }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} 连接数过多"
+          description: "服务 {{ $labels.service }} 的 {{ $labels.type }} 连接数超过1000，当前值: {{ $value }}"
+
+      # 协作事件异常告警
+      - alert: CollaborationEventSpike
+        expr: |
+          sum(rate(codestudio_collaboration_events_total[5m])) by (service) > 10
+        for: 3m
+        labels:
+          severity: info
+          service: "{{ $labels.service }}"
+        annotations:
+          summary: "服务 {{ $labels.service }} 协作事件激增"
+          description: "服务 {{ $labels.service }} 的协作事件频率超过10次/秒，可能存在异常活动"
+
+  - name: codestudio.node.rules
+    rules:
+      # Node.js进程告警
+      - alert: NodeProcessRestart
+        expr: changes(process_start_time_seconds[10m]) > 0
+        for: 0m
+        labels:
+          severity: warning
+          service: "{{ $labels.job }}"
+        annotations:
+          summary: "Node.js进程重启"
+          description: "服务 {{ $labels.job }} 的Node.js进程在过去10分钟内重启了"
+
+      # 事件循环延迟告警
+      - alert: HighEventLoopLag
+        expr: nodejs_eventloop_lag_seconds > 0.1
+        for: 2m
+        labels:
+          severity: warning
+          service: "{{ $labels.job }}"
+        annotations:
+          summary: "Node.js事件循环延迟过高"
+          description: "服务 {{ $labels.job }} 的事件循环延迟超过100ms，当前值: {{ $value }}秒"
+
+      # 堆内存使用告警
+      - alert: HighHeapUsage
+        expr: |
+          (nodejs_heap_size_used_bytes / nodejs_heap_size_total_bytes) * 100 > 90
+        for: 5m
+        labels:
+          severity: critical
+          service: "{{ $labels.job }}"
+        annotations:
+          summary: "Node.js堆内存使用率过高"
+          description: "服务 {{ $labels.job }} 的堆内存使用率超过90%，当前值: {{ $value }}%"
+
+      # 垃圾回收频率告警
+      - alert: HighGCFrequency
+        expr: rate(nodejs_gc_duration_seconds_total[5m]) > 0.1
+        for: 3m
+        labels:
+          severity: warning
+          service: "{{ $labels.job }}"
+        annotations:
+          summary: "Node.js垃圾回收频率过高"
+          description: "服务 {{ $labels.job }} 的垃圾回收频率超过0.1次/秒，可能存在内存泄漏"

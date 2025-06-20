@@ -1,0 +1,258 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "CodeStudio Pro Ultimate 3.0 - 服务详情",
+    "tags": ["codestudio", "services"],
+    "style": "dark",
+    "timezone": "browser",
+    "refresh": "30s",
+    "templating": {
+      "list": [
+        {
+          "name": "service",
+          "type": "query",
+          "query": "label_values(codestudio_http_requests_total, service)",
+          "refresh": 1,
+          "includeAll": false,
+          "multi": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "服务状态",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "up{job=\"$service\"}",
+            "legendFormat": "服务状态"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "请求速率",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(rate(codestudio_http_requests_total{service=\"$service\"}[5m]))",
+            "legendFormat": "请求/秒"
+          }
+        ],
+        "gridPos": {
+          "h": 6,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "错误率",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(rate(codestudio_http_requests_total{service=\"$service\",status_code=~\"5..\"}[5m])) / sum(rate(codestudio_http_requests_total{service=\"$service\"}[5m])) * 100",
+            "legendFormat": "错误率 (%)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 1
+                },
+                {
+                  "color": "red",
+                  "value": 5
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 6,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 4,
+        "title": "平均响应时间",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.50, rate(codestudio_http_request_duration_seconds_bucket{service=\"$service\"}[5m]))",
+            "legendFormat": "P50 (秒)"
+          }
+        ],
+        "gridPos": {
+          "h": 6,
+          "w": 6,
+          "x": 18,
+          "y": 0
+        }
+      },
+      {
+        "id": 5,
+        "title": "HTTP状态码分布",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum by (status_code) (rate(codestudio_http_requests_total{service=\"$service\"}[5m]))",
+            "legendFormat": "{{status_code}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "请求/秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 6
+        }
+      },
+      {
+        "id": 6,
+        "title": "响应时间分布",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(codestudio_http_request_duration_seconds_bucket{service=\"$service\"}[5m]))",
+            "legendFormat": "P95"
+          },
+          {
+            "expr": "histogram_quantile(0.90, rate(codestudio_http_request_duration_seconds_bucket{service=\"$service\"}[5m]))",
+            "legendFormat": "P90"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(codestudio_http_request_duration_seconds_bucket{service=\"$service\"}[5m]))",
+            "legendFormat": "P50"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 6
+        }
+      },
+      {
+        "id": 7,
+        "title": "内存使用情况",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "codestudio_resource_usage{service=\"$service\",resource_type=~\"memory.*\"}",
+            "legendFormat": "{{resource_type}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "字节"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 14
+        }
+      },
+      {
+        "id": 8,
+        "title": "系统健康组件",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "codestudio_system_health{service=\"$service\"}",
+            "legendFormat": "{{component}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "健康状态",
+            "min": 0,
+            "max": 1
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 14
+        }
+      },
+      {
+        "id": 9,
+        "title": "活跃连接详情",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "codestudio_active_connections{service=\"$service\"}",
+            "legendFormat": "{{type}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "连接数"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 22
+        }
+      }
+    ]
+  }
+}

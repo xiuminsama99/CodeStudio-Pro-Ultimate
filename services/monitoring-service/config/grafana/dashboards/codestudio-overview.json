@@ -1,0 +1,214 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "CodeStudio Pro Ultimate 3.0 - 系统概览",
+    "tags": ["codestudio", "overview"],
+    "style": "dark",
+    "timezone": "browser",
+    "refresh": "30s",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "系统健康状态",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "codestudio_system_health",
+            "legendFormat": "{{service}} - {{component}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "green",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "HTTP请求总数",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(codestudio_http_requests_total[5m])",
+            "legendFormat": "{{service}} - {{method}} {{route}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "请求/秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "HTTP请求延迟",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(codestudio_http_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "95th percentile"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(codestudio_http_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "50th percentile"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 4,
+        "title": "活跃连接数",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "codestudio_active_connections",
+            "legendFormat": "{{service}} - {{type}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "连接数"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "id": 5,
+        "title": "资源使用情况",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "codestudio_resource_usage{resource_type=\"cpu\"}",
+            "legendFormat": "CPU - {{service}}"
+          },
+          {
+            "expr": "codestudio_resource_usage{resource_type=\"memory\"}",
+            "legendFormat": "Memory - {{service}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "使用率 (%)"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 6,
+        "title": "配置操作统计",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(codestudio_config_operations_total[5m])",
+            "legendFormat": "{{operation}} - {{status}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "操作/秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        }
+      },
+      {
+        "id": 7,
+        "title": "实例操作统计",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(codestudio_instance_operations_total[5m])",
+            "legendFormat": "{{operation}} - {{status}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "操作/秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 24
+        }
+      },
+      {
+        "id": 8,
+        "title": "协作事件统计",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(codestudio_collaboration_events_total[5m])",
+            "legendFormat": "{{event_type}} - {{service}}"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "事件/秒"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 32
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "codestudio-config-service",
+  "version": "1.0.0",
+  "description": "CodeStudio Collaborative config-service",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "build": "npm run test"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "helmet": "^6.0.0",
+    "mongodb": "^6.0.0",
+    "redis": "^4.6.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "nodemon": "^2.0.0",
+    "supertest": "^6.3.0"
+  }
+}

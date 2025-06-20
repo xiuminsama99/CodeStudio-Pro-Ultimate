@@ -1,38 +1,93 @@
-# CodeStudio Pro Ultimate - Git忽略文件
+# CodeStudio Pro Ultimate 3.0 - Git忽略文件
 
-# 用户数据目录（包含个人设置和缓存）
+# ===== Node.js 相关 =====
+# 依赖包目录（最重要）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json.backup
+
+# ===== 前端构建文件 =====
+dist/
+build/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# ===== 环境变量和配置 =====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ===== IDE 和编辑器 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== 用户数据目录（包含个人设置和缓存） =====
 data/user-data/
 data/extensions/
+data/logs/
 
-# 缓存文件
+# ===== 实例和测试数据 =====
+instances/*/
+test-*/
+logs/
+
+# ===== 缓存和临时文件 =====
 *.pak
 *.dll
 *.dat
 *.bin
-
-# 日志文件
 *.log
-logs/
-
-# 临时文件
 *.tmp
 *.temp
+.cache/
+.temp/
 
-# 系统文件
+# ===== 系统文件 =====
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# 状态文件（包含个人配置）
-codestudio_ultimate_state.json
+# ===== 状态和配置文件（包含个人配置） =====
+config/codestudio_ultimate_state.json
+config/pouch.json
 
-# 备份文件
+# ===== 备份文件 =====
 *.backup
 *.bak
+*.orig
 
-# 编译文件
+# ===== 编译和可执行文件 =====
 *.exe
 *.msi
+codestudiopro.exe
 
-# 大型资源文件（保留核心文件）
+# ===== 大型资源文件 =====
 chrome_*.pak
 resources.pak
+resources/app/
+ffmpeg.dll
+libEGL.dll
+libGLESv2.dll
+v8_context_snapshot.bin
+vk_swiftshader.dll
+vulkan-1.dll
+snapshot_blob.bin
+icudtl.dat
+d3dcompiler_47.dll
+
+# ===== Docker 相关 =====
+.dockerignore
+docker-compose.override.yml
+
+# ===== 监控和日志 =====
+prometheus-data/
+grafana-data/
+*.log.*
